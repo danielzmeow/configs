@@ -18,3 +18,9 @@ echo "The most valuable context is the environment surrounding."
 #    && -z "$VSCODE_GIT_IPC_HANDLE" ]]; then
 #   tmux attach-session -t default || tmux new-session -s default
 # fi
+
+# Added by Nowledge Mem
+export PATH="$HOME/.local/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/daniel/.antigravity/antigravity/bin:$PATH"

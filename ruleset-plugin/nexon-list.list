@@ -1,0 +1,20 @@
+# Nexon list
+HOST-SUFFIX,stamp.mp.nexon.com,PROXY
+HOST-SUFFIX,m.nexon.com,PROXY
+HOST-SUFFIX,ba.dn.nexoncdn.co.kr,PROXY
+HOST-SUFFIX,nxm-eu-bagl.nexon.com,PROXY
+HOST-SUFFIX,nxm-tw-bagl.nexon.com,PROXY
+HOST-SUFFIX,nxm-hk-bagl.nexon.com,PROXY
+HOST-SUFFIX,api.ngsm.nexon.com,PROXY
+HOST-SUFFIX,log.ngsm.nexon.com,PROXY
+HOST-SUFFIX,sdk-push.mp.nexon.com,PROXY
+HOST-SUFFIX,m-api.nexon.com,PROXY
+HOST-SUFFIX,public.api.nexon.com,PROXY
+HOST-SUFFIX,api-patch.nexon.com,PROXY
+HOST-SUFFIX,jp.livelog.nexon.com,PROXY
+HOST-SUFFIX,forum.nexon.com,PROXY
+HOST-KEYWORD,log.nexon,PROXY
+HOST-KEYWORD,ssl.nexon,PROXY
+HOST-SUFFIX,gtable.inface.nexon.com,PROXY
+HOST-SUFFIX,ngsm.nexon.com,PROXY
+HOST-SUFFIX,na.nexon.com,PROXY
