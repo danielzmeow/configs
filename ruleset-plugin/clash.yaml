@@ -1,0 +1,206 @@
+# Converted from Loon config for Clash / Clash.Meta / Mihomo.
+#
+# Notes:
+# - Loon MITM ca-p12 / ca-passphrase is not supported by standard Clash config.
+# - Loon Plugin / Rewrite / Script sections are not directly supported here.
+# - Loon Remote Filter has no direct Clash equivalent; the local proxy is modeled
+#   as a normal proxy and selected through the Available group.
+# - The ddgkdsf2013 AI remote rule list has been expanded into local rules.
+
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+
+external-controller: 127.0.0.1:9090
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+tcp-concurrent: true
+
+dns:
+  enable: true
+  ipv6: false
+  listen: 0.0.0.0:1053
+  enhanced-mode: redir-host
+  nameserver:
+    - system
+    - 119.29.29.29
+    - 114.114.114.114
+    - 223.5.5.5
+
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  strict-route: false
+  route-exclude-address:
+    - 10.0.0.0/8
+    - 100.64.0.0/10
+    - 127.0.0.0/8
+    - 169.254.0.0/16
+    - 172.16.0.0/12
+    - 192.0.0.0/24
+    - 192.0.2.0/24
+    - 192.88.99.0/24
+    - 192.168.0.0/16
+    - 198.51.100.0/24
+    - 203.0.113.0/24
+    - 224.0.0.0/4
+    - 255.255.255.255/32
+
+proxies:
+  - name: Proxy Cheap
+    type: socks5
+    server: YOUR_PROXY_SERVER
+    port: 1080
+    username: YOUR_PROXY_USERNAME
+    password: YOUR_PROXY_PASSWORD
+    udp: true
+    ip-version: ipv4
+
+proxy-groups:
+  - name: Available
+    type: select
+    proxies:
+      - Proxy Cheap
+      - DIRECT
+
+rules:
+  # Local / private networks from Loon skip-proxy and bypass-tun.
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - DOMAIN,localhost,DIRECT
+  - DOMAIN-SUFFIX,local,DIRECT
+  - DOMAIN,e.crashlynatics.com,DIRECT
+
+  # --- 1. Google Basics ---
+  # 覆盖登录、验证、基础静态资源，防止 IP 撕裂
+  - DOMAIN-SUFFIX,google.com,Available
+  - DOMAIN-SUFFIX,gstatic.com,Available
+  - DOMAIN-SUFFIX,googleapis.com,Available
+
+  # --- 2. Google AI ---
+  - DOMAIN,gemini.google.com,Available
+  - DOMAIN,proactivebackend-pa.googleapis.com,Available
+  - DOMAIN,alkali.storage.googleapis.com,Available
+  - DOMAIN,aistudio.google.com,Available
+  - DOMAIN,ai.google.dev,Available
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,Available
+  - DOMAIN-SUFFIX,deepmind.google,Available
+  - DOMAIN-SUFFIX,aiplatform.googleapis.com,Available
+
+  # --- 3. OpenAI ---
+  - DOMAIN-SUFFIX,openai.com,Available
+  - DOMAIN-SUFFIX,chatgpt.com,Available
+  - DOMAIN-SUFFIX,oaistatic.com,Available
+  - DOMAIN-SUFFIX,oaiusercontent.com,Available
+  - DOMAIN-SUFFIX,intercom.io,Available
+  - DOMAIN-SUFFIX,sentry.io,Available
+  - DOMAIN-SUFFIX,identrust.com,Available
+
+  # --- 4. Personal Config ---
+  - DOMAIN-SUFFIX,crixet.com,Available
+  - DOMAIN-SUFFIX,danielz.net,Available
+  - DOMAIN-SUFFIX,arc.net,Available
+  - DOMAIN-SUFFIX,notebooklm.google,Available
+  - DOMAIN-SUFFIX,diabrowser.com,Available
+  - DOMAIN,api.segment.io,Available
+  - DOMAIN-SUFFIX,launchdarkly.com,Available
+  - DOMAIN-SUFFIX,diabrowser.engineering,Available
+  - DOMAIN-KEYWORD,porn,Available
+  - DOMAIN-SUFFIX,x.ai,DIRECT
+  - DOMAIN-SUFFIX,grok.com,DIRECT
+  - DOMAIN,pplx-res.cloudinary.com,DIRECT
+  - DOMAIN-SUFFIX,perplexity.ai,DIRECT
+  - DOMAIN-SUFFIX,perplexity.com,DIRECT
+  - DOMAIN-SUFFIX,pplx.ai,DIRECT
+
+  # --- Expanded ddgkdsf2013 AI Rule ---
+  - DOMAIN,api.statsig.com,Available
+  - DOMAIN,browser-intake-datadoghq.com,Available
+  - DOMAIN,static.cloudflareinsights.com,Available
+  - DOMAIN-SUFFIX,algolia.net,Available
+  - DOMAIN-SUFFIX,auth0.com,Available
+  - DOMAIN-SUFFIX,cloudflare.com,Available
+  - DOMAIN-SUFFIX,arkoselabs.com,Available
+  - DOMAIN-SUFFIX,statsigapi.net,Available
+  - DOMAIN-SUFFIX,featuregates.org,Available
+  - DOMAIN-SUFFIX,identrust.com,Available
+  - DOMAIN-SUFFIX,intercom.io,Available
+  - DOMAIN-SUFFIX,intercomcdn.com,Available
+  - DOMAIN-SUFFIX,launchdarkly.com,Available
+  - DOMAIN-SUFFIX,segment.io,Available
+  - DOMAIN-SUFFIX,amazonaws.com,Available
+  - DOMAIN-SUFFIX,wp.com,Available
+  - DOMAIN-SUFFIX,sentry.io,Available
+  - DOMAIN-SUFFIX,stripe.com,Available
+  - DOMAIN,cdn.usefathom.com,Available
+  - DOMAIN-SUFFIX,anthropic.com,Available
+  - DOMAIN-SUFFIX,claude.ai,Available
+  - DOMAIN-SUFFIX,claudeusercontent.com,Available
+  - DOMAIN-SUFFIX,cursor.sh,Available
+  - DOMAIN-SUFFIX,dify.ai,Available
+  - DOMAIN,ai.google.dev,Available
+  - DOMAIN,makersuite.google.com,Available
+  - DOMAIN-SUFFIX,gemini.google.com,Available
+  - DOMAIN-SUFFIX,apis.google.com,Available
+  - DOMAIN-SUFFIX,clients6.google.com,Available
+  - DOMAIN-SUFFIX,clients4.google.com,Available
+  - DOMAIN-SUFFIX,deepmind.com,Available
+  - DOMAIN-SUFFIX,deepmind.google,Available
+  - DOMAIN-SUFFIX,generativeai.google,Available
+  - DOMAIN-SUFFIX,colab.google.com,Available
+  - DOMAIN-SUFFIX,colab.research.google.com,Available
+  - DOMAIN-SUFFIX,developerprofiles.google.com,Available
+  - DOMAIN-SUFFIX,googleusercontent.com,Available
+  - DOMAIN-SUFFIX,googleapis.com,Available
+  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,Available
+  - DOMAIN-SUFFIX,grazie.ai,Available
+  - DOMAIN-SUFFIX,meta.ai,Available
+  - DOMAIN-SUFFIX,meta.com,Available
+  - DOMAIN-SUFFIX,notebooklm.google.com,Available
+  - DOMAIN-SUFFIX,notebooklm.google,Available
+  - DOMAIN,api.msn.com,Available
+  - DOMAIN,assets.msn.com,Available
+  - DOMAIN,copilot.microsoft.com,Available
+  - DOMAIN,gateway.bingviz.microsoft.net,Available
+  - DOMAIN,gateway.bingviz.microsoftapp.net,Available
+  - DOMAIN,in.appcenter.ms,Available
+  - DOMAIN,location.microsoft.com,Available
+  - DOMAIN,odc.officeapps.live.com,Available
+  - DOMAIN,r.bing.com,Available
+  - DOMAIN,self.events.data.microsoft.com,Available
+  - DOMAIN,services.bingapis.com,Available
+  - DOMAIN,sydney.bing.com,Available
+  - DOMAIN,www.bing.com,Available
+  - DOMAIN-SUFFIX,api.microsoftapp.net,Available
+  - DOMAIN-SUFFIX,bing-shopping.microsoft-falcon.io,Available
+  - DOMAIN-SUFFIX,edgeservices.bing.com,Available
+  - DOMAIN-SUFFIX,midjourney.com,Available
+  - DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net,Available
+  - DOMAIN,openaicomproductionae4b.blob.core.windows.net,Available
+  - DOMAIN,production-openaicom-storage.azureedge.net,Available
+  - DOMAIN-SUFFIX,ai.com,Available
+  - DOMAIN-SUFFIX,chatgpt.com,Available
+  - DOMAIN-SUFFIX,livekit.cloud,Available
+  - DOMAIN-SUFFIX,oaistatic.com,Available
+  - DOMAIN-SUFFIX,oaiusercontent.com,Available
+  - DOMAIN-SUFFIX,openai.com,Available
+  - DOMAIN-SUFFIX,azureedge.net,Available
+  - DOMAIN-SUFFIX,imgix.net,Available
+  - DOMAIN,pplx-res.cloudinary.com,Available
+  - DOMAIN-SUFFIX,perplexity.ai,Available
+  - DOMAIN-SUFFIX,pplx.ai,Available
+  - DOMAIN-SUFFIX,perplexity.com,Available
+  - DOMAIN-SUFFIX,poe.com,Available
+  - DOMAIN-SUFFIX,poecdn.net,Available
+  - DOMAIN-SUFFIX,x.ai,Available
+  - DOMAIN-SUFFIX,grok.com,Available
+
+  - MATCH,DIRECT
