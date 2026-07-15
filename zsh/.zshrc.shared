@@ -9,6 +9,7 @@ alias cddev='cd ~/developer'
 alias ls='eza --icons=auto'
 alias py3='python3'
 alias rm='trash'
+alias python='python3'
 
 # Plugins (Homebrew paths)
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
