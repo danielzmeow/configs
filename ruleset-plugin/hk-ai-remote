@@ -12,10 +12,9 @@ DOMAIN-SUFFIX,anthropic.com
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,claude
 DOMAIN-SUFFIX,crixet.com
-DOMAIN-SUFFIX,danielz.net
 DOMAIN-SUFFIX,arc.net
 DOMAIN-SUFFIX,notebooklm.google
 DOMAIN-SUFFIX,diabrowser.com
 DOMAIN,api.segment.io
-DOMAIN-SUFFIX,lauchdarkly.com
+DOMAIN-SUFFIX,launchdarkly.com
 DOMAIN-SUFFIX,diabrowser.engineering
