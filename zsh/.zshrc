@@ -1,11 +1,13 @@
 # Include Shared Zsh file
 source ~/.zshrc.shared
 
-# Customisation
-alias updateall='brew update && brew upgrade && omz update && npm update'
-
-# Customisation
-export PATH="/opt/homebrew/opt/python@3.14/bin:$PATH"
+# Customisation: same alias/PATH working on both macOS and Arch Linux
+if [[ "$(uname)" == "Darwin" ]]; then
+  alias updateall='brew update && brew upgrade && omz update && npm update'
+  export PATH="/opt/homebrew/opt/python@3.14/bin:$PATH"
+else
+  alias updateall='omarchy update && omz update && npm update'
+fi
 
 echo "The most valuable context is the environment surrounding."
 
