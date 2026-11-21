@@ -1,8 +1,26 @@
+# SpaceXAI
 DOMAIN-SUFFIX,x.ai
 DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,cursor.com
+
+# PPLX
 DOMAIN,pplx-res.cloudinary.com
 DOMAIN-SUFFIX,perplexity.ai
 DOMAIN-SUFFIX,perplexity.com
 DOMAIN-SUFFIX,pplx.ai
-DOMAIN-SUFFIX,cursor.sh
-DOMAIN-SUFFIX,cursor.com
+
+# Poe
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,poecdn.net
+
+# Hugging Face
+DOMAIN-SUFFIX,huggingface.co
+DOMAIN-SUFFIX,hf.co
+
+# Groq / Mistral / Together / Replicate / Fal
+DOMAIN-SUFFIX,groq.com
+DOMAIN-SUFFIX,mistral.ai
+DOMAIN-SUFFIX,together.ai
+DOMAIN-SUFFIX,replicate.com
+DOMAIN-SUFFIX,fal.ai
