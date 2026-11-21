@@ -8,6 +8,12 @@ DOMAIN-SUFFIX,identrust.com
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,claude
 
+# Google AI
+DOMAIN-SUFFIX,aiplatform.googleapis.com
+DOMAIN-SUFFIX,dialogflow.com
+DOMAIN-SUFFIX,dialogflow.googleapis.com
+DOMAIN-SUFFIX,firebaseai.googleapis.com
+
 # 其他 AI / 工具服务
 DOMAIN-SUFFIX,crixet.com
 DOMAIN-SUFFIX,arc.net
