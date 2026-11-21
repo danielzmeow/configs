@@ -5,8 +5,6 @@ DOMAIN-SUFFIX,sentry.io
 DOMAIN-SUFFIX,identrust.com
 
 # Anthropic / Claude
-DOMAIN-SUFFIX,claude.ai
-DOMAIN-SUFFIX,anthropic.com
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,claude
 
